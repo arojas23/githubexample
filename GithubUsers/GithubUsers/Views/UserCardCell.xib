@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="236" id="hxQ-YO-EJD">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="236" id="hxQ-YO-EJD" customClass="UserCardCell" customModule="GithubUsers" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="629" height="236"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hxQ-YO-EJD" id="Wv1-31-fk1">
@@ -44,6 +44,12 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="userLinkProfileLabel" destination="Z5P-Oj-aWj" id="ehN-pA-LZf"/>
+                <outlet property="userNameProfileLabel" destination="I7Z-BE-bvT" id="2b8-Wh-xk5"/>
+                <outlet property="userProfileImageView" destination="Io5-So-K0M" id="mD5-xR-HHR"/>
+                <outlet property="userReposProfileLabel" destination="J7q-Mz-Ij2" id="16c-5R-JZB"/>
+            </connections>
             <point key="canvasLocation" x="-151.19999999999999" y="88.15592203898052"/>
         </tableViewCell>
     </objects>
