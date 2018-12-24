@@ -25,26 +25,27 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7Z-BE-bvT">
-                        <rect key="frame" x="122" y="8" width="487" height="22"/>
+                        <rect key="frame" x="122" y="7" width="487" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Repos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7q-Mz-Ij2">
-                        <rect key="frame" x="122" y="67" width="487" height="18"/>
+                        <rect key="frame" x="122" y="65" width="487" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="github link" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5P-Oj-aWj">
-                        <rect key="frame" x="122" y="37" width="487" height="18"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="github Link" translatesAutoresizingMaskIntoConstraints="NO" id="InS-hl-Cs9">
+                        <rect key="frame" x="117" y="29" width="255" height="31"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                    </textView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Io5-So-K0M" firstAttribute="leading" secondItem="Wv1-31-fk1" secondAttribute="leading" constant="20" id="D9C-SF-RBV"/>
@@ -53,7 +54,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="userLinkProfileLabel" destination="Z5P-Oj-aWj" id="ehN-pA-LZf"/>
+                <outlet property="userLinkProfileLabel" destination="InS-hl-Cs9" id="s7U-Ou-YK8"/>
                 <outlet property="userNameProfileLabel" destination="I7Z-BE-bvT" id="2b8-Wh-xk5"/>
                 <outlet property="userProfileImageView" destination="Io5-So-K0M" id="mD5-xR-HHR"/>
                 <outlet property="userReposProfileLabel" destination="J7q-Mz-Ij2" id="16c-5R-JZB"/>

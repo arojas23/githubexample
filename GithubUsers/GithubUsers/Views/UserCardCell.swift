@@ -14,7 +14,7 @@ class UserCardCell: UITableViewCell {
     
     @IBOutlet weak var userProfileImageView: UIImageView!
     @IBOutlet weak var userNameProfileLabel: UILabel!
-    @IBOutlet weak var userLinkProfileLabel: UILabel!
+    @IBOutlet weak var userLinkProfileLabel: UITextView!
     @IBOutlet weak var userReposProfileLabel: UILabel!
     
     var onButtonTapped : (() -> Void)? = nil
