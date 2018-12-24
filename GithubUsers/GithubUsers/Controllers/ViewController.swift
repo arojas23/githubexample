@@ -15,33 +15,51 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //Identifier Cell
     let userCardCell = "UserCardCell"
-    let userList:[JSON] = []
+    var userList:[JSON] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        Alamofire.request("\(Constants.serverURL)/users").responseJSON { (response) -> Void in
-            print(response)
-            self.tableView.reloadData()
-        }
         
         //Registering User Custom Cell
         self.tableView.register(UserCardCell.self, forCellReuseIdentifier: self.userCardCell)
         self.tableView.register(UINib(nibName: "UserCardCell", bundle: nil), forCellReuseIdentifier: self.userCardCell)
         self.tableView.rowHeight = 100
 
+        //getUsers
+        self.getUsers()
     }
     
+    //Request to API -> We can move it to another place ... services.swift
+    
+    func getUsers() {
+        Alamofire.request("\(Constants.serverURL)/users").responseJSON { (response) -> Void in
+            switch response.result {
+            case .success(let value):
+//                self.userList.append(JSON(value).array
+                let userListResponse = JSON(value).array
+                self.userList += userListResponse ?? []
+                print(JSON(value))
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    //Delegate Methods UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return userList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // create a new cell if needed or reuse an old one
         let userCell = tableView.dequeueReusableCell(withIdentifier: userCardCell) as! UserCardCell
-        userCell.userNameProfileLabel.text = "ALVARO ROJAS"
+        
+        let user = self.userList[indexPath.row].dictionary!
+        userCell.userNameProfileLabel.text = user["login"]?.stringValue
+        userCell.userLinkProfileLabel.text = user["html_url"]?.stringValue
+        userCell.setImageURL(user["avatar_url"]?.stringValue ?? "")
         
         return userCell
     }
