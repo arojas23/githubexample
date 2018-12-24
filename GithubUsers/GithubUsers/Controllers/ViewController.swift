@@ -76,6 +76,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         userCell.userLinkProfileLabel.text = user["html_url"]?.stringValue
         userCell.setImageURL(user["avatar_url"]?.stringValue ?? "")
         
+        userCell.onButtonTapped = {
+            print("*********************")
+        }
+        
         return userCell
     }
     

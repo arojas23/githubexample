@@ -20,6 +20,11 @@ class UserCardCell: UITableViewCell {
     
     var onButtonTapped : (() -> Void)? = nil
 
+    @IBAction func onRepositoriesTapped(_ sender: Any) {
+        if let onButtonTapped = self.onButtonTapped {
+            onButtonTapped()
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
     }

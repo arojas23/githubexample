@@ -25,27 +25,31 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7Z-BE-bvT">
-                        <rect key="frame" x="122" y="7" width="487" height="21"/>
+                        <rect key="frame" x="122" y="6" width="487" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Repos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7q-Mz-Ij2">
-                        <rect key="frame" x="122" y="64" width="487" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="github Link" translatesAutoresizingMaskIntoConstraints="NO" id="InS-hl-Cs9">
-                        <rect key="frame" x="117" y="28" width="255" height="31"/>
+                        <rect key="frame" x="117" y="26" width="255" height="31"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         <dataDetectorType key="dataDetectorTypes" link="YES"/>
                     </textView>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILb-xg-8MR">
+                        <rect key="frame" x="122" y="58" width="227" height="31"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="15"/>
+                        <state key="normal" title="Repositories">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="onRepositoriesTapped:" destination="hxQ-YO-EJD" eventType="touchUpInside" id="Zgs-h7-dE0"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Io5-So-K0M" firstAttribute="leading" secondItem="Wv1-31-fk1" secondAttribute="leading" constant="20" id="D9C-SF-RBV"/>
@@ -57,7 +61,6 @@
                 <outlet property="userLinkProfileLabel" destination="InS-hl-Cs9" id="s7U-Ou-YK8"/>
                 <outlet property="userNameProfileLabel" destination="I7Z-BE-bvT" id="2b8-Wh-xk5"/>
                 <outlet property="userProfileImageView" destination="Io5-So-K0M" id="mD5-xR-HHR"/>
-                <outlet property="userReposProfileLabel" destination="J7q-Mz-Ij2" id="16c-5R-JZB"/>
             </connections>
             <point key="canvasLocation" x="-796" y="-11.694152923538232"/>
         </tableViewCell>
