@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
 class UserCardCell: UITableViewCell {
     
@@ -23,9 +24,16 @@ class UserCardCell: UITableViewCell {
     }
     
     func setImageURL(_ urlImage: String) {
-        let url = URL(string: urlImage)
-        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-        self.userProfileImageView.image = UIImage(data: data!)
+        if(!urlImage.isEmpty) {
+            Alamofire.request(urlImage).response { response in
+                if let data = response.data {
+                    let image = UIImage(data: data)
+                    self.userProfileImageView.image = image
+                } else {
+                    print("Data is nil :(")
+                }
+            }
+        }
     }
     
 }
