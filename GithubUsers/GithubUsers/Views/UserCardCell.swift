@@ -26,6 +26,7 @@ class UserCardCell: UITableViewCell {
     
     func setImageURL(_ urlImage: String) {
         if(!urlImage.isEmpty) {
+            self.userProfileImageView.image = UIImage()
             if let image = imageCache.object(forKey: NSString(string: urlImage)) {
                 self.userProfileImageView.image = image
                 return
