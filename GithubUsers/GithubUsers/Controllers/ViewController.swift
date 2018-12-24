@@ -15,7 +15,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //Identifier Cell
     let userCardCell = "UserCardCell"
+    let loadMoreCell = "LoadMoreCell"
+    
+    //UserList
     var userList:[JSON] = []
+    var sinceQuery = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,21 +27,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //Registering User Custom Cell
         self.tableView.register(UserCardCell.self, forCellReuseIdentifier: self.userCardCell)
         self.tableView.register(UINib(nibName: "UserCardCell", bundle: nil), forCellReuseIdentifier: self.userCardCell)
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.loadMoreCell)
         self.tableView.rowHeight = 100
 
         //getUsers
-        self.getUsers()
+        self.getUsers(since: sinceQuery)
     }
     
     //Request to API -> We can move it to another place ... services.swift
     
-    func getUsers() {
-        Alamofire.request("\(Constants.serverURL)/users").responseJSON { (response) -> Void in
+    func getUsers(since: Int = 0) {
+        Alamofire.request("\(Constants.serverURL)/users?since\(since)", parameters:["since": since]).responseJSON { (response) -> Void in
             switch response.result {
             case .success(let value):
-//                self.userList.append(JSON(value).array
                 let userListResponse = JSON(value).array
                 self.userList += userListResponse ?? []
+                
+                //Preparing the Since value for the next query
+                self.sinceQuery = self.sinceQuery + self.userList.count
                 print(JSON(value))
                 self.tableView.reloadData()
             case .failure(let error):
@@ -48,14 +55,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //Delegate Methods UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userList.count
+        
+        // this +1 is to add the ... Load More
+        return userList.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        // create a new cell if needed or reuse an old one
-        let userCell = tableView.dequeueReusableCell(withIdentifier: userCardCell) as! UserCardCell
+        if(indexPath.row == userList.count) {
+            let loadMoreCell = self.tableView.dequeueReusableCell(withIdentifier: self.loadMoreCell)
+            loadMoreCell?.textLabel?.text = "Load More..."
+            return loadMoreCell!
+        }
         
+        let userCell = self.tableView.dequeueReusableCell(withIdentifier: userCardCell, for: indexPath) as! UserCardCell
+        
+        //Set Custom Cell with User values
         let user = self.userList[indexPath.row].dictionary!
         userCell.userNameProfileLabel.text = user["login"]?.stringValue
         userCell.userLinkProfileLabel.text = user["html_url"]?.stringValue
@@ -64,7 +79,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return userCell
     }
     
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(indexPath.row == userList.count) {
+            self.getUsers(since: self.sinceQuery)
+        }
+    }
 
 }
 

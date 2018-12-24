@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Alamofire
 
+let imageCache = NSCache<NSString, UIImage>()
 class UserCardCell: UITableViewCell {
     
     @IBOutlet weak var userProfileImageView: UIImageView!
@@ -25,10 +26,16 @@ class UserCardCell: UITableViewCell {
     
     func setImageURL(_ urlImage: String) {
         if(!urlImage.isEmpty) {
+            if let image = imageCache.object(forKey: NSString(string: urlImage)) {
+                self.userProfileImageView.image = image
+                return
+            }
             Alamofire.request(urlImage).response { response in
                 if let data = response.data {
                     let image = UIImage(data: data)
                     self.userProfileImageView.image = image
+                    imageCache.setObject(image!, forKey: NSString(string: urlImage))
+
                 } else {
                     print("Data is nil :(")
                 }
