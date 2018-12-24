@@ -15,4 +15,11 @@ class UserCardCell: UITableViewCell {
     @IBOutlet weak var userNameProfileLabel: UILabel!
     @IBOutlet weak var userLinkProfileLabel: UILabel!
     @IBOutlet weak var userReposProfileLabel: UILabel!
+    
+    var onButtonTapped : (() -> Void)? = nil
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
 }

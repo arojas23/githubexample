@@ -10,39 +10,47 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="236" id="hxQ-YO-EJD" customClass="UserCardCell" customModule="GithubUsers" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="629" height="236"/>
-            <autoresizingMask key="autoresizingMask"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCardCell" rowHeight="236" id="hxQ-YO-EJD" customClass="UserCardCell" customModule="GithubUsers" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="629" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hxQ-YO-EJD" id="Wv1-31-fk1">
-                <rect key="frame" x="0.0" y="0.0" width="629" height="235.5"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <rect key="frame" x="0.0" y="0.0" width="629" height="99.5"/>
+                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Io5-So-K0M">
-                        <rect key="frame" x="20" y="40" width="157" height="157"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userProfileDefault" translatesAutoresizingMaskIntoConstraints="NO" id="Io5-So-K0M">
+                        <rect key="frame" x="20" y="9" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="Ld1-Qo-6al"/>
+                            <constraint firstAttribute="width" constant="80" id="MjD-Z0-yR2"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7Z-BE-bvT">
-                        <rect key="frame" x="208" y="48" width="326" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="github link" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5P-Oj-aWj">
-                        <rect key="frame" x="208" y="105" width="93" height="24"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                        <rect key="frame" x="122" y="9" width="326" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Repos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7q-Mz-Ij2">
-                        <rect key="frame" x="208" y="173" width="58" height="24"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                        <rect key="frame" x="122" y="68" width="42" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="github link" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5P-Oj-aWj">
+                        <rect key="frame" x="122" y="38" width="66" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="Io5-So-K0M" firstAttribute="leading" secondItem="Wv1-31-fk1" secondAttribute="leading" constant="20" id="D9C-SF-RBV"/>
+                    <constraint firstItem="Io5-So-K0M" firstAttribute="top" secondItem="Wv1-31-fk1" secondAttribute="top" constant="10" id="FCk-lk-Gul"/>
+                    <constraint firstAttribute="bottom" secondItem="Io5-So-K0M" secondAttribute="bottom" constant="9.5" id="xBJ-iL-p0C"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="userLinkProfileLabel" destination="Z5P-Oj-aWj" id="ehN-pA-LZf"/>
@@ -50,7 +58,10 @@
                 <outlet property="userProfileImageView" destination="Io5-So-K0M" id="mD5-xR-HHR"/>
                 <outlet property="userReposProfileLabel" destination="J7q-Mz-Ij2" id="16c-5R-JZB"/>
             </connections>
-            <point key="canvasLocation" x="-151.19999999999999" y="88.15592203898052"/>
+            <point key="canvasLocation" x="-796" y="-11"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="userProfileDefault" width="72" height="72"/>
+    </resources>
 </document>

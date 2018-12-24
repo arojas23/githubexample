@@ -12,15 +12,24 @@ import SwiftyJSON
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
+    
+    //Identifier Cell
+    let userCardCell = "UserCardCell"
+    let userList:[JSON] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         Alamofire.request("\(Constants.serverURL)/users").responseJSON { (response) -> Void in
             print(response)
+            self.tableView.reloadData()
         }
         
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        //Registering User Custom Cell
+        self.tableView.register(UserCardCell.self, forCellReuseIdentifier: self.userCardCell)
+        self.tableView.register(UINib(nibName: "UserCardCell", bundle: nil), forCellReuseIdentifier: self.userCardCell)
+        self.tableView.rowHeight = 100
 
     }
     
@@ -29,13 +38,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         // create a new cell if needed or reuse an old one
-        let cellReuseIdentifier = "cell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let userCell = tableView.dequeueReusableCell(withIdentifier: userCardCell) as! UserCardCell
+        userCell.userNameProfileLabel.text = "ALVARO ROJAS"
         
-        cell.textLabel?.text = "Section \(indexPath.section) Row \(indexPath.row)"
-        
-        return cell
+        return userCell
     }
     
 
