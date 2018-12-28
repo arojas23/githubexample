@@ -34,8 +34,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.getUsers(since: sinceQuery)
     }
     
-    //Request to API -> We can move it to another place ... services.swift
-    
+    //Request to API -> We can move it to another place ... services.swift    
     func getUsers(since: Int = 0) {
         Alamofire.request("\(Constants.serverURL)/users?since\(since)", parameters:["since": since]).responseJSON { (response) -> Void in
             switch response.result {
@@ -68,6 +67,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return loadMoreCell!
         }
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let userCell = self.tableView.dequeueReusableCell(withIdentifier: userCardCell, for: indexPath) as! UserCardCell
         
         //Set Custom Cell with User values
@@ -77,7 +77,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         userCell.setImageURL(user["avatar_url"]?.stringValue ?? "")
         
         userCell.onButtonTapped = {
-            print("*********************")
+            NSLog("App > Displaying RepositoriesView")
+            let repositoriesViewController = storyboard.instantiateViewController(withIdentifier: "RepositoriesViewController") as! RepositoriesViewController
+            self.navigationController?.pushViewController(repositoriesViewController, animated: true)
+            
         }
         
         return userCell
@@ -90,4 +93,3 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
 }
-
