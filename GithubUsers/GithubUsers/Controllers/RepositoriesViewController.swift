@@ -12,11 +12,16 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBOutlet weak var tableView: UITableView!
     
+    //RepoURL var
+    var repoUrl = ""
+    
     //Identifier Cell
     let repoCardCell = "RepoCardCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSLog("API > Calling Repo URL: \(self.repoUrl)")
         
         //Registering Custom Cell
         self.tableView.register(RepoCardCell.self, forCellReuseIdentifier: self.repoCardCell)

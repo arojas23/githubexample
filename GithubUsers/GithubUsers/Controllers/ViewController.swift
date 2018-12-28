@@ -79,6 +79,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         userCell.onButtonTapped = {
             NSLog("App > Displaying RepositoriesView")
             let repositoriesViewController = storyboard.instantiateViewController(withIdentifier: "RepositoriesViewController") as! RepositoriesViewController
+            repositoriesViewController.title = user["login"]?.stringValue.uppercased() ?? ""
+            repositoriesViewController.repoUrl = user["repos_url"]?.stringValue ?? ""
             self.navigationController?.pushViewController(repositoriesViewController, animated: true)
             
         }
