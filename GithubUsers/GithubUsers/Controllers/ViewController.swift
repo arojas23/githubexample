@@ -29,7 +29,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.register(UINib(nibName: "UserCardCell", bundle: nil), forCellReuseIdentifier: self.userCardCell)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.loadMoreCell)
         self.tableView.rowHeight = 100
-        self.tableView.allowsSelection = false;
+//        self.tableView.allowsSelection = false;
         
         //getUsers
         self.getUsers(since: sinceQuery)
@@ -90,6 +90,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         if(indexPath.row == userList.count) {
             self.getUsers(since: self.sinceQuery)
         }

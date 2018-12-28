@@ -27,8 +27,18 @@ class GithubUsersUITests: XCTestCase {
     }
 
     func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        //Testing Main Flow of the app
+        
+        let app = XCUIApplication()
+        app.tables/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"mojombo")/*[[".cells.containing(.link, identifier:\"https:\/\/github.com\/mojombo\")",".cells.containing(.staticText, identifier:\"mojombo\")"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.buttons["Repositories"].tap()
+        
+        let button = app.otherElements.containing(.navigationBar, identifier:"MOJOMBO").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .button).matching(identifier: "Button").element(boundBy: 1)
+        button.tap()
+        button.tap()
+        button.tap()
+        app.navigationBars["MOJOMBO"].buttons["Back"].tap()
+        
     }
 
 }

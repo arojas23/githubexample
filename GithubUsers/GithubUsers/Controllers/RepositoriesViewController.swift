@@ -32,7 +32,7 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UITab
         //Registering Custom Cell
         self.tableView.register(RepoCardCell.self, forCellReuseIdentifier: self.repoCardCell)
         self.tableView.register(UINib(nibName: self.repoCardCell, bundle: nil), forCellReuseIdentifier: self.repoCardCell)
-        self.tableView.rowHeight = 160
+        self.tableView.rowHeight = 150
         self.tableView.allowsSelection = false;
         
     }
