@@ -34,7 +34,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.getUsers(since: sinceQuery)
     }
     
-    //Request to API -> We can move it to another place ... services.swift    
+    //Request to API -> We can move it to another place ... SERVICES LAYER!!
     func getUsers(since: Int = 0) {
         Alamofire.request("\(Constants.serverURL)/users?since", parameters:["since": since]).responseJSON { (response) -> Void in
             switch response.result {

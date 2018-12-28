@@ -35,7 +35,7 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UITab
         self.tableView.rowHeight = 160
     }
     
-    //Request to API -> We can move it to another place ... services.swift !!!!
+    //Request to API -> We can move it to another place ... SERVICES LAYER
     func getReposList(page: Int = 1, per_page: Int = 12) {
         if(!self.repoUrl.isEmpty) {
             Alamofire.request(self.repoUrl, parameters:["page": page, "per_page": per_page])
@@ -43,9 +43,16 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UITab
                 switch response.result{
                 case .success(let value) :
                     let repoListResponse = JSON(value).array
-                    self.repoListItems.removeAll()
-                    self.repoListItems += repoListResponse ?? []
-                    print(JSON(value))
+                    
+                    //If RepoList is empty  -> means that we don't have more pages
+                    if(repoListResponse!.isEmpty) {
+                        self.pageNumber = self.pageNumber - 1
+                        self.setPageNumberLabel()
+                    }
+                    else {
+                        self.repoListItems.removeAll()
+                        self.repoListItems += repoListResponse ?? []
+                    }
                     self.tableView.reloadData()
                 case .failure(let error):
                     print(error)
@@ -77,17 +84,22 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UITab
         
         return repoCell
     }
+
+    //Set Page Number label
+    func setPageNumberLabel() {
+        self.pageNumberLabel.text = "Page \(self.pageNumber)"
+    }
     
     //Button Actions
     @IBAction func rightPressed(_ sender: Any) {
         self.pageNumber = self.pageNumber + 1
         self.getReposList(page: self.pageNumber)
-        self.pageNumberLabel.text = "Page \(self.pageNumber)"
+        self.setPageNumberLabel()
     }
     
     @IBAction func leftPressed(_ sender: Any) {
         self.pageNumber = max(1, self.pageNumber - 1)
         self.getReposList(page: self.pageNumber)
-        self.pageNumberLabel.text = "Page \(self.pageNumber)"
+        self.setPageNumberLabel()
     }
 }
