@@ -18,14 +18,16 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UITab
     var repoUrl = ""
     var repoListItems:[JSON] = []
     
+    var pageNumber = 1
     //Identifier Cell
     let repoCardCell = "RepoCardCell"
+    @IBOutlet weak var pageNumberLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NSLog("API > Calling Repo URL: \(self.repoUrl)")
-        self.getReposList(page: 1, per_page: 5)
+        self.getReposList(page: self.pageNumber)
         
         //Registering Custom Cell
         self.tableView.register(RepoCardCell.self, forCellReuseIdentifier: self.repoCardCell)
@@ -34,13 +36,14 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     //Request to API -> We can move it to another place ... services.swift !!!!
-    func getReposList(page: Int = 1, per_page: Int = 10) {
+    func getReposList(page: Int = 1, per_page: Int = 12) {
         if(!self.repoUrl.isEmpty) {
             Alamofire.request(self.repoUrl, parameters:["page": page, "per_page": per_page])
             .responseJSON { (response) -> Void in
                 switch response.result{
                 case .success(let value) :
                     let repoListResponse = JSON(value).array
+                    self.repoListItems.removeAll()
                     self.repoListItems += repoListResponse ?? []
                     print(JSON(value))
                     self.tableView.reloadData()
@@ -71,8 +74,21 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UITab
         let totalIssues = openIssues + forkIssues
         repoCell.issuesCountText.text = "Issues: \(totalIssues)"
         repoCell.openIssuesCountText.text = "Open Issues: \(openIssues)"
-        repoCell.forkIssuesCountText.text = "Fork Issues: \(forkIssues)"
+        repoCell.forkIssuesCountText.text = "Forks: \(forkIssues)"
         
         return repoCell
+    }
+    
+    //Button Actions
+    @IBAction func rightPressed(_ sender: Any) {
+        self.pageNumber = self.pageNumber + 1
+        self.getReposList(page: self.pageNumber)
+        self.pageNumberLabel.text = "Page \(self.pageNumber)"
+    }
+    
+    @IBAction func leftPressed(_ sender: Any) {
+        self.pageNumber = max(0, self.pageNumber - 1)
+        self.getReposList(page: self.pageNumber)
+        self.pageNumberLabel.text = "Page \(self.pageNumber)"
     }
 }
