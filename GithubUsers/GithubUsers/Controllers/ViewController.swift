@@ -36,7 +36,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //Request to API -> We can move it to another place ... services.swift    
     func getUsers(since: Int = 0) {
-        Alamofire.request("\(Constants.serverURL)/users?since\(since)", parameters:["since": since]).responseJSON { (response) -> Void in
+        Alamofire.request("\(Constants.serverURL)/users?since", parameters:["since": since]).responseJSON { (response) -> Void in
             switch response.result {
             case .success(let value):
                 let userListResponse = JSON(value).array
