@@ -33,6 +33,8 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UITab
         self.tableView.register(RepoCardCell.self, forCellReuseIdentifier: self.repoCardCell)
         self.tableView.register(UINib(nibName: self.repoCardCell, bundle: nil), forCellReuseIdentifier: self.repoCardCell)
         self.tableView.rowHeight = 160
+        self.tableView.allowsSelection = false;
+        
     }
     
     //Request to API -> We can move it to another place ... SERVICES LAYER

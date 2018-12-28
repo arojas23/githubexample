@@ -29,7 +29,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.register(UINib(nibName: "UserCardCell", bundle: nil), forCellReuseIdentifier: self.userCardCell)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.loadMoreCell)
         self.tableView.rowHeight = 100
-
+        self.tableView.allowsSelection = false;
+        
         //getUsers
         self.getUsers(since: sinceQuery)
     }
