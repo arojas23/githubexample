@@ -87,7 +87,7 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     @IBAction func leftPressed(_ sender: Any) {
-        self.pageNumber = max(0, self.pageNumber - 1)
+        self.pageNumber = max(1, self.pageNumber - 1)
         self.getReposList(page: self.pageNumber)
         self.pageNumberLabel.text = "Page \(self.pageNumber)"
     }
