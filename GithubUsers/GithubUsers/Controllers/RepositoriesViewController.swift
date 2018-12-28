@@ -72,15 +72,7 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UITab
         let repoItem = self.repoListItems[indexPath.row]
         
         //Set values to Cell
-        repoCell.githubRepoLinkText.text = repoItem["clone_url"].stringValue
-        repoCell.repoNameGithubText.text = repoItem["name"].stringValue
-        
-        repoCell.repoDescriptionGitHubText.text = repoItem["description"].stringValue
-        let openIssues = repoItem["open_issues_count"].intValue
-        let forkIssues = repoItem["forks_count"].intValue
-//        let totalIssues = openIssues + forkIssues
-        repoCell.openIssuesCountText.text = "Open Issues: \(openIssues)"
-        repoCell.forkIssuesCountText.text = "Forks: \(forkIssues)"
+        repoCell.setValues(repoItem)
         
         return repoCell
     }

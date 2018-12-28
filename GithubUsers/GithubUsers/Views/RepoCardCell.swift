@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class RepoCardCell: UITableViewCell {
     
@@ -20,5 +21,17 @@ class RepoCardCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    func setValues(_ repoItem: JSON) {
+        self.githubRepoLinkText.text = repoItem["clone_url"].stringValue
+        self.repoNameGithubText.text = repoItem["name"].stringValue
+        
+        self.repoDescriptionGitHubText.text = repoItem["description"].stringValue
+        let openIssues = repoItem["open_issues_count"].intValue
+        let forkIssues = repoItem["forks_count"].intValue
+        //        let totalIssues = openIssues + forkIssues
+        self.openIssuesCountText.text = "Open Issues: \(openIssues)"
+        self.forkIssuesCountText.text = "Forks: \(forkIssues)"
     }
 }
