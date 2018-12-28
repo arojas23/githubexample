@@ -71,8 +71,7 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UITab
         repoCell.repoDescriptionGitHubText.text = repoItem["description"].stringValue
         let openIssues = repoItem["open_issues_count"].intValue
         let forkIssues = repoItem["forks_count"].intValue
-        let totalIssues = openIssues + forkIssues
-        repoCell.issuesCountText.text = "Issues: \(totalIssues)"
+//        let totalIssues = openIssues + forkIssues
         repoCell.openIssuesCountText.text = "Open Issues: \(openIssues)"
         repoCell.forkIssuesCountText.text = "Forks: \(forkIssues)"
         
