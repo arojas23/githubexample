@@ -67,7 +67,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return loadMoreCell!
         }
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let userCell = self.tableView.dequeueReusableCell(withIdentifier: userCardCell, for: indexPath) as! UserCardCell
         
         //Set Custom Cell with User values
@@ -76,6 +75,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         userCell.userLinkProfileLabel.text = user["html_url"]?.stringValue
         userCell.setImageURL(user["avatar_url"]?.stringValue ?? "")
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         userCell.onButtonTapped = {
             NSLog("App > Displaying RepositoriesView")
             let repositoriesViewController = storyboard.instantiateViewController(withIdentifier: "RepositoriesViewController") as! RepositoriesViewController
